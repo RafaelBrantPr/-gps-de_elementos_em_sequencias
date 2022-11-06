@@ -6,38 +6,36 @@ Github : https://github.com/RafaelBrantPr
 
 from PySimpleGUI import PySimpleGUI as sg
 
-#layout
 sg.theme('Reddit')
-layout = [
-    ['Qtd. de Elementos',['2','3','4']],
-    [sg.Text('1º item:'), sg.Input(size=(2), key='Prim.ele')],
-    [sg.Text('2º item:'), sg.Input(size=(2), key='Segd.ele')],
-    [sg.Text('3º item:'), sg.Input(size=(2), key='Terc.ele')],
-    [sg.Text('Posição'), sg.Input(size=(30),key='posicao')],
-    [sg.Button('Calcular'), sg.Text(key='saida')],
-]
+# All the stuff inside your window.
+layout = [  [sg.Text('1º elemento:'), sg.InputText(size=15, key='F_ele')],
+            [sg.Text('2º elemento:'), sg.InputText(size=15, key='S_ele')],
+            [sg.Text('3º elemento:'), sg.InputText(size=15, key='T_ele')],
+            [sg.Text('Posição'), sg.InputText(size=25, key='posicao')],
+            [sg.Button('Calcular'), sg.Button('Sair')],
+            [sg.Text('', key='saida')] ]
 
-#janela
-janela = sg.Window("GPS de elementos em sequências", layout)
+# Create the Window
+window = sg.Window('Window Title', layout)
 
-#Código
+# Code
 while True:
-    evento, valores = janela.read()
-    if evento == sg.WIN_CLOSED:
+    event, values = window.read()
+    if event == sg.WIN_CLOSED or event == 'Sair':
         break
-    if evento == 'Calcular':
-        posicao = int(valores['posicao'])
-        seq1 = valores['Prim.ele']
-        seq2 = valores['Segd.ele']
-        seq3 = valores['Terc.ele']
-        tam_seq = 3
-        position = posicao%tam_seq
-        if position == 0:
-            position = seq3
-        elif position == 1:
-            position = seq1
-        else:
-            position = seq2
-        janela['saida'].update(f"O elemento na {posicao}º posição é: {position}")
+    if event == 'Calcular':
+        seq1 = values['F_ele']
+        seq2 = values['S_ele']
+        seq3 = values['T_ele']
+        posicao = int(values['posicao'])
+        calc = posicao%3
 
-janela.close()
+        if calc == 0:
+            calc = seq3
+        elif calc == 1:
+            calc = seq1
+        else:
+            calc = seq2
+        window['saida'].update(f"O elemento na {posicao}º posição é: {calc}")
+
+window.close()

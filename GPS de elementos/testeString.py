@@ -3,7 +3,7 @@ Autor : Rafael Brant
 Github : https://github.com/RafaelBrantPr
 Últimas alterações : 11/05/2022
 '''
-
+#Just testing
 from PySimpleGUI import PySimpleGUI as sg
 
 #layout
@@ -25,5 +25,6 @@ while True:
     if evento == 'Calcular':
         posicao = int(valores['posicao'])
         conta = posicao%3
+        janela['saida'].update(f"O resto é: {conta}")
 
 janela.close()
