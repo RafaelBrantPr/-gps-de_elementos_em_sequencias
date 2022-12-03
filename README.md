@@ -1,3 +1,3 @@
-# -gps-de_elementos_em_sequencias
-Neste projeto você consegue calcular a posição de determinado objeto dentro de uma seqência apenas digitando a ordem da sequência(de símbolos ou números) e a posição que deseja.
-Ao digitar os valores no input de posição, não tenha medo, pode digitar valores altos.
+# GPS of elements in sequences
+In this project you can calculate the position of a given object within a sequence just typing the order of the sequence (symbols or numbers) and the position you want.
+When typing the values in the position input, don't be afraid, you can type high values.
